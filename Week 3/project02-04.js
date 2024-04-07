@@ -16,32 +16,42 @@ const SALMON_PRICE = 18.95;
 const SALAD_PRICE = 7.95;
 const SALES_TAX = 0.07;
 
+// Run the calcTotal function every time a checkbox is clicked
 document.getElementById("chicken").onclick = calcTotal;
 document.getElementById("halibut").onclick = calcTotal;
 document.getElementById("burger").onclick = calcTotal;
 document.getElementById("salmon").onclick = calcTotal;
 document.getElementById("salad").onclick = calcTotal;
 
+// calcTotal function to calculate total price
 function calcTotal(){
-  var cost = 0;
-  var buyChicken = document.getElementById("chicken").checked;
-  var buyHalibut = document.getElementById("halibut").checked;
-  var buyBurger = document.getElementById("burger").checked;
-  var buySalmon = document.getElementById("salmon").checked;
-  var buySalad = document.getElementById("salad").checked;
+  let cost = 0;
+  let buyChicken = document.getElementById("chicken").checked;
+  let buyHalibut = document.getElementById("halibut").checked;
+  let buyBurger = document.getElementById("burger").checked;
+  let buySalmon = document.getElementById("salmon").checked;
+  let buySalad = document.getElementById("salad").checked;
 
+  // Determine if the checkboxes are checked then increase the total in cost
   cost += buyChicken ? CHICKEN_PRICE : 0;
   cost += buyHalibut ? HALIBUT_PRICE : 0;
   cost += buyBurger ? BURGER_PRICE : 0;
   cost += buySalmon ? SALMON_PRICE : 0;
   cost += buySalad ? SALAD_PRICE : 0;
 
+  // Display the formatted total of cost in the foodTotal element
   document.getElementById("foodTotal").innerHTML = formatCurrency(cost);
 
-  var tax = cost * SALES_TAX;
+  // Calculate the sales tax for cost
+  let tax = cost * SALES_TAX;
+
+  // Display the formatted tax in the foodTax element
   document.getElementById("foodTax").innerHTML = formatCurrency(tax);
 
-  var totalCost = cost + tax;
+  // Calculate the total of cost and tax
+  let totalCost = cost + tax;
+
+  // Display the formatted total in the totalBill element
   document.getElementById("totalBill").innerHTML = formatCurrency(totalCost);
 }
 
